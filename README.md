@@ -62,8 +62,19 @@ En backend se utilizó lo siguiente:
  
 <br>
 
-## **APLICACIÓN HEROKU**
+## **Frontend**
+Para el frontend se utilizo angular.
+El proyecto se encuentra en: https://github.com/Miguel-Parra/-AuthApp_MEAN_frontend_Angular 
 
+<br>
+
+## **Heroku**
+
+<br>
+
+La aplicación se encuentra desplegada en:
+
+https://authapp-mean-angular-node.herokuapp.com/
 
 
 
