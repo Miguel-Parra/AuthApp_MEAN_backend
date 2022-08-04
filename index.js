@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const { dbConnection } = require('./db/config');
 require('dotenv').config();
+const path = require ('path');
 
 // crear el servidor/aplicacion de express
 const app = express();
@@ -26,6 +27,11 @@ app.use( express.json())
 
 //RUTAS 
 app.use('/api/auth', require('./routes/auth'));
+
+//MANEJAR DEMAS RUTAS
+app.use('*', (req, resp) => {
+	resp.sendFile(path.resolve(__dirname, 'public/index.html'))
+})
 
 
 

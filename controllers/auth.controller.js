@@ -33,6 +33,7 @@ const crearUsuario = async (req, res = response) => {
             ok: true,
             uid: usuario.id,
             name,
+			email,
             token
         })
 
@@ -70,6 +71,7 @@ const login = async (req, res = response) => {
                 ok: true,
                 uid: usuarioDB.id,
                 name: usuarioDB.name,
+				email: usuarioDB.email,
                 token
             })
 
@@ -91,16 +93,20 @@ const login = async (req, res = response) => {
 }
 
 const renovarToken = async (req, res = response) => {
-    const {uidUsuario, nameUsuario} = req;
+    const {uidUsuario} = req;
 
+	const {name, email} = await Usuario.findById(uidUsuario) 
+	//findById funciona más rápido que el findOne
+	
     //generar el JWT
-    const token = await generarJWT(uidUsuario,nameUsuario)
+    const token = await generarJWT(uidUsuario,name)
 
     return res.json({
         ok: true,
         uidUsuario, 
-        nameUsuario,
-        token
+        name,
+        token, 
+		email
         
     })
 }
